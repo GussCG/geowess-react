@@ -1,0 +1,12 @@
+.private-layout {
+  display: grid;
+  grid-template-columns: auto 1fr; // sidebar + main
+  grid-template-rows: 1fr;
+  grid-template-areas: "sidebar main";
+  min-height: 100vh;
+
+  main {
+    grid-area: main;
+    padding: 20px;
+  }
+}

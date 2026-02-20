@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$font-family: "Be Vietnam Pro", sans-serif;
+
+/*Tamaños*/
+
+$logo-font-size: 48px;
+$logo-width: 210px;
+$logo-height: 70px;
+$placeholder-font-size: 16px;
+
+/**Dashboard*/
+$dashboard-h1-font-size: 40px;
+$dashboard-h2-font-size: 32px;
+
+$task-font-size: 20px;
+$task-limit-font-size: 15px;
+
+$msg-chat-name-font-size: 16px;
+$msg-chat-msg-font-size: 14px;
+$msg-chat-role-font-size: 13px;
+$msg-chat-image-width-height: 60px;
+
+$proyecto-th-font-size: 24px;
+$proyecto-td-font-size: 16px;
+
+/**Index*/
+$index-h1-font-size: 64px;
+$index-icon-width-height: 50px;
+$index-nav-p-font-size: 24px;
+$index-login-button-font-size: 20px;
+
+/**Login y Registro*/
+$lr-h1-font-size: 36px;
+$lr-a-font-size: 16px;
+$lr-button-font-size: 16px;
+$lr-input-font-size: 16px;
+$lr-select-font-size: 16px;
+$lr-image-width-height: 512px;
+$lr-passwordeye-width-height: 24px;
+$lr-stroke-width: 5px;
+
+/**User-roles*/
+$ur-pillmode-width: 283px;
+$ur-height: 93px;
+$ur-fullmode-width: 694px;
+$ur-arrow-width-height: 32px;
+$ur-name-font-size: 16px;
+$ur-role-font-size: 13px;
+$ur-image-width-height: 60px;
+$ur-icons-width-height: 27px;
+
+/*Pesos*/
+$light: 300;
+$regular: 400;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;

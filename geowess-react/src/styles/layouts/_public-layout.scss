@@ -1,0 +1,16 @@
+.public-layout {
+  display: grid;
+  grid-template-rows: auto 1fr; // navbar + main
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "nav"
+    "main";
+
+  width: 100%;
+  min-height: 100vh;
+
+  main {
+    grid-area: main;
+    padding: 20px;
+  }
+}

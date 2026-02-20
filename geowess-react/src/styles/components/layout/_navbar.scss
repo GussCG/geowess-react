@@ -1,0 +1,177 @@
+@use "../../variables" as *;
+
+.navbar {
+  width: 100%;
+  height: auto;
+  min-height: 80px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "logo links login";
+  align-items: center;
+
+  padding: 30px;
+
+  .navbar__left-buttons {
+    grid-area: logo;
+    .navbar__logo {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 150px;
+      height: 40px;
+
+      margin: 0 6px;
+      overflow: hidden;
+
+      -webkit-mask-image: url("../../../assets/GWlogo.svg");
+      mask-image: url("../../../assets/GWlogo.svg");
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+      mask-position: center;
+
+      background-color: transparent;
+      transition: all 0.3s ease-in-out;
+
+      // CAPA 1: EL COLOR DEL LOGO
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--logo-color);
+        z-index: 1;
+        transition: background-color 0.3s ease;
+      }
+
+      // CAPA 2: EL BRILLO (SHINE)
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          rgba(255, 255, 255, 0) 20%,
+          rgba(255, 255, 255, 0.9) 50%,
+          // Brillo intenso
+          rgba(255, 255, 255, 0) 80%,
+          transparent 100%
+        );
+        transform: skewX(-25deg);
+        animation: shine 5s infinite ease-in-out;
+        z-index: 2; // Asegura que esté por encima del color
+      }
+
+      svg {
+        visibility: hidden; // Sigue oculto para evitar el efecto doble
+      }
+
+      &:hover {
+        filter: drop-shadow(0 0 15px var(--logo-color));
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .navbar__center-buttons {
+    grid-area: links;
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 70px;
+
+      .navbar__item {
+        list-style: none;
+
+        transition: all 0.3s ease-in-out;
+
+        .navbar__link {
+          position: relative;
+          text-decoration: none;
+          color: var(--text-color);
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          .navbar__link {
+            filter: drop-shadow(0 0 15px var(--logo-color));
+          }
+        }
+      }
+    }
+  }
+
+  .navbar__right-buttons {
+    grid-area: login;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+
+    .navbar__theme-toggle {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--index-login-button-color);
+      color: var(--index-register-button-color);
+      border: 2px solid var(--logo-color);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--index-register-button-color);
+        color: var(--index-login-button-color);
+      }
+
+      svg {
+        width: 18px;
+        height: auto;
+      }
+    }
+
+    .navbar__link--login {
+      width: auto;
+      height: 40px;
+      display: flex;
+      padding: 0 20px;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--index-login-button-color);
+      color: var(--index-register-button-color);
+      border: 2px solid var(--logo-color);
+      border-radius: 50px;
+      font-style: normal;
+      font-weight: var(--regular);
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 29px;
+      transition:
+        color 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--index-register-button-color);
+        color: var(--index-login-button-color);
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+[data-theme="light"] {
+  --bg-color-deg-1: #eeaeca;
+  --bg-color-deg-2: #fff9c5;
+  --bg-color-deg-3: #b1a3e7;
+  --bg-color-deg-4: #94bbe9;
+
+  --bg-color-default: #ffffff;
+
+  --logo-color: #000000;
+  --text-color: #000000;
+  --dashboard-div-bg-color: #d9d9d9;
+  --login-register-bg-color: #fff;
+
+  --notification-bg-color: #ff3434;
+  --notification-color: #fff;
+
+  --task-deco-stroke-color: #ffa5a5;
+  --task-urgent-color: #ff3434;
+  --task-limit-color: #777575;
+
+  --startdate-color: #609f6a;
+  --enddate-color: #b57676;
+  --progress-bar-color: #86ff4e;
+  --progress-bar-bg-color: #d9d9d9;
+  --progress-bar-stroke-color: #a3a3a3;
+
+  --info-bg-color: #d9d9d9;
+
+  --a-logged-color: rgb(50, 0, 144);
+
+  /**Index*/
+  --index-login-button-color: #000000;
+  --index-register-button-color: #fafafa;
+  --index-div-bg-color: #d9d9d9;
+
+  --hero-bg-color: #00000033;
+  --hero-border-color: #000000;
+  --hero-dot-color-1: #ff3434;
+  --hero-dot-color-2: #609f6a;
+  --hero-dot-color-3: #90e1ff;
+
+  --bg-main: #ffffff;
+  --bubble-1: rgba(255, 0, 111, 0.8);
+  --bubble-2: rgba(51, 0, 255, 0.8);
+  --bubble-3: rgba(0, 119, 255, 0.8);
+  --bubble-4: rgba(255, 230, 0, 0.8);
+  --bubble-blend: multiply;
+  --bubble-opacity: 0.9;
+  --grid-overlay-color: rgba(0, 0, 0, 0.03);
+
+  --error-color: #ffc2c2;
+  --error-border-color: #6f0000;
+
+  --login-a-color: #0000ff;
+
+  --dashboard-bg-color: rgba(255, 255, 255, 0.6);
+  --dashboard-border-color: rgba(0, 0, 0, 0.5);
+  --text-muted: #212121;
+  --text-alert: #980000;
+  --dashboard-item-bg-color: rgba(0, 0, 0, 0.266);
+  --dashboard-item-border-color: rgba(0, 0, 0, 0.398);
+  --dashboard-item-hover-bg-color: rgba(86, 86, 86, 0.15);
+  --dashboard-item-alert-bg-color: rgba(255, 100, 100, 0.2);
+  --dashboard-item-alert-border-color: rgba(255, 100, 100, 0.4);
+
+  --status-pending-color: #ffcd45;
+  --status-inprogress-color: #87ceeb;
+  --status-completed-color: #77dd77;
+  --status-cancelled-color: #ff6464;
+  --status-color: #000000;
+
+  --bar-color: rgb(0, 117, 219);
+}

@@ -1,0 +1,68 @@
+[data-theme="dark"] {
+  --bg-color-default: #212121;
+
+  --logo-color: #c4c4c4;
+  --text-color: #ffffff;
+  --dashboard-div-bg-color: #d9d9d9;
+  --login-register-bg-color: #fff;
+
+  --notification-bg-color: #ff3434;
+  --notification-color: #fff;
+
+  --task-deco-stroke-color: #ffa5a5;
+  --task-urgent-color: #ff3434;
+  --task-limit-color: #777575;
+
+  --startdate-color: #609f6a;
+  --enddate-color: #b57676;
+  --progress-bar-color: #86ff4e;
+  --progress-bar-bg-color: #d9d9d9;
+  --progress-bar-stroke-color: #a3a3a3;
+
+  --info-bg-color: #d9d9d9;
+
+  --a-logged-color: rgb(50, 0, 144);
+
+  /**Index*/
+  --index-login-button-color: #000000;
+  --index-register-button-color: #ffffff;
+  --index-div-bg-color: #d9d9d9;
+
+  --hero-bg-color: #60606050;
+  --hero-border-color: #cbcbcb;
+  --hero-dot-color-1: #ff3434;
+  --hero-dot-color-2: #609f6a;
+  --hero-dot-color-3: #90e1ff;
+
+  --bg-main: #080810;
+  --bubble-1: rgba(109, 0, 58, 0.9);
+  --bubble-2: rgba(31, 0, 143, 0.9);
+  --bubble-3: rgba(0, 57, 136, 0.9);
+  --bubble-4: rgba(122, 112, 0, 0.7);
+  --bubble-blend: screen; /* En dark mode, 'screen' hace que brillen */
+  --bubble-opacity: 0.8;
+  --grid-overlay-color: rgba(255, 255, 255, 0.03);
+
+  --error-color: #480000;
+  --error-border-color: #ff7474;
+
+  --login-a-color: #428eff;
+
+  --dashboard-bg-color: rgba(20, 20, 30, 0.6);
+  --dashboard-border-color: rgba(255, 255, 255, 0.1);
+  --text-muted: #b3b3b3;
+  --text-alert: #ff6464;
+  --dashboard-item-bg-color: rgba(255, 255, 255, 0.1);
+  --dashboard-item-border-color: rgba(255, 255, 255, 0.2);
+  --dashboard-item-hover-bg-color: rgba(255, 255, 255, 0.15);
+  --dashboard-item-alert-bg-color: rgba(255, 100, 100, 0.2);
+  --dashboard-item-alert-border-color: rgba(255, 100, 100, 0.4);
+
+  --status-pending-color: #ffcd45;
+  --status-inprogress-color: #87ceeb;
+  --status-completed-color: #77dd77;
+  --status-cancelled-color: #ff6464;
+  --status-color: #000000;
+
+  --bar-color: rgb(62, 98, 130);
+}
