@@ -12,8 +12,11 @@
 @use "components/layout/hero" as *;
 @use "components/layout/usersidebar" as *;
 @use "components/layout/section" as *;
+@use "components/layout/editar-perfil" as *;
+@use "components/layout/projects-page" as *;
+@use "components/layout/project-page" as *;
 
 // Layouts
 @use "layouts/public-layout" as *;
 @use "layouts/private-layout" as *;
-@use "layouts/dashboard" as *;
+// @use "layouts/dashboard" as *;

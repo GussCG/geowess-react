@@ -2,11 +2,35 @@ import { supabase } from "../lib/supabase";
 
 export const projectService = {
   async getUserProjects(userId: string) {
-    return supabase.from("proyecto").select("*").eq("creado_por", userId);
+    return supabase
+      .from("proyecto")
+      .select(
+        `
+        *,
+        supervisor:perfil!supervisor_id (id, nombre, ap_paterno, ap_materno)
+      `,
+      )
+      .eq("creado_por", userId);
   },
 
   async getProjectById(id: string) {
-    return supabase.from("proyecto").select("*").eq("id", id).single();
+    return supabase
+      .from("proyecto")
+      .select(
+        `
+      *,
+      supervisor:perfil!supervisor_id (id, nombre, ap_paterno, ap_materno)
+    `,
+      )
+      .eq("id", id)
+      .single();
+  },
+
+  async getAllProjects() {
+    return supabase.from("proyecto").select(`
+        *,
+        supervisor:perfil!supervisor_id (id, nombre, ap_paterno, ap_materno)
+      `);
   },
 
   async createProject(project: any) {
@@ -14,14 +38,20 @@ export const projectService = {
   },
 
   async updateProject(id: string, updates: any) {
-    return supabase.from("proyecto").update(updates).eq("id", id);
+    return supabase
+      .from("proyecto")
+      .update(updates)
+      .eq("id", id)
+      .select(
+        `
+        *,
+        supervisor:perfil!supervisor_id (id, nombre, ap_paterno, ap_materno)
+      `,
+      )
+      .single();
   },
 
   async deleteProject(id: string) {
     return supabase.from("proyecto").delete().eq("id", id);
-  },
-
-  async getAllProjects() {
-    return supabase.from("proyecto").select("*");
   },
 };

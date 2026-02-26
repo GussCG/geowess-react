@@ -1,0 +1,41 @@
+@use "../../variables" as *;
+
+.projects-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "header"
+    "content"
+    "pagination";
+  align-items: start;
+  align-content: start;
+  gap: 1.5rem;
+  min-height: auto;
+
+  .page-header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .page-header-section {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      flex-direction: column;
+
+      .page-header-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  table {
+    grid-area: content;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+  }
+}

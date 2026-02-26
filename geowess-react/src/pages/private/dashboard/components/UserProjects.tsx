@@ -15,9 +15,10 @@ interface UserProjectsProps {
     presupuesto?: number;
     estado?: string;
   }[];
+  loading?: boolean;
 }
 
-function UserProjects({ projects }: UserProjectsProps) {
+function UserProjects({ projects, loading }: UserProjectsProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<{
     key: string;
@@ -29,88 +30,7 @@ function UserProjects({ projects }: UserProjectsProps) {
 
   if (!projects) return null;
 
-  const sampleProjects = [
-    {
-      id: "1",
-      nombre: "Proyecto A",
-      fecha_inicio: "2024-01-01",
-      fecha_fin: "2024-12-31",
-      status: true,
-      ubicacion: "Ciudad A",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "activo",
-    },
-    {
-      id: "2",
-      nombre: "Proyecto B",
-      fecha_inicio: "2024-02-01",
-      fecha_fin: "2024-11-30",
-      status: false,
-      ubicacion: "Ciudad B",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "activo",
-    },
-    {
-      id: "3",
-      nombre: "Proyecto C",
-      fecha_inicio: "2024-01-01",
-      fecha_fin: "2024-12-31",
-      status: true,
-      ubicacion: "Ciudad C",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "pausado",
-    },
-    {
-      id: "4",
-      nombre: "Proyecto D",
-      fecha_inicio: "2024-01-01",
-      fecha_fin: "2024-12-31",
-      status: true,
-      ubicacion: "Ciudad D",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "activo",
-    },
-    {
-      id: "5",
-      nombre: "Proyecto E",
-      fecha_inicio: "2024-01-01",
-      fecha_fin: "2024-12-31",
-      status: true,
-      ubicacion: "Ciudad E",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "activo",
-    },
-    {
-      id: "6",
-      nombre: "Proyecto F",
-      fecha_inicio: "2024-01-01",
-      fecha_fin: "2024-12-31",
-      status: true,
-      ubicacion: "Ciudad F",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "activo",
-    },
-  ];
-
-  const baseProjects = projects.length > 0 ? projects : sampleProjects;
+  const baseProjects = projects;
 
   const filteredAndSortedProjects = useMemo(() => {
     let processed = [...baseProjects];
@@ -145,23 +65,28 @@ function UserProjects({ projects }: UserProjectsProps) {
   };
 
   return (
-    <Section title="Mis Proyectos" variant="table">
-      <div
-        style={{
-          marginBottom: "1rem",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Buscar proyecto..."
-          className="filter-btn" // Reutilizamos tu estilo
-          style={{ width: "250px", padding: "0.5rem 1rem" }}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
+    <Section
+      title="Mis Proyectos"
+      variant="table"
+      actions={
+        <div
+          style={{
+            marginBottom: "0",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Buscar proyecto..."
+            className="filter-btn"
+            style={{ width: "250px", padding: "0.5rem 1rem" }}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      }
+    >
       <table>
         <thead>
           <tr>

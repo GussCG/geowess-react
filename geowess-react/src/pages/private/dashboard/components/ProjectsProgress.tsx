@@ -34,33 +34,27 @@ interface ProjectsProgressProps {
     presupuesto?: number;
     estado?: string;
   }[];
+  loading?: boolean;
 }
 
-export default function ProjectsProgress({ projects }: ProjectsProgressProps) {
+export default function ProjectsProgress({
+  projects,
+  loading,
+}: ProjectsProgressProps) {
   const [chartType, setChartType] = useState<"bar" | "line" | "area">("bar");
   const [chartColor, setChartColor] = useState(COLORS[0].value);
 
-  if (!projects) return null;
-
-  // Datos de ejemplo para el gráfico, mapeando los proyectos a un formato adecuado
-  const dataExample = [
-    { name: "Proyecto A", progress: 75 },
-    { name: "Proyecto B", progress: 50 },
-    { name: "Proyecto C", progress: 25 },
-    { name: "Proyecto D", progress: 90 },
-  ];
-
-  //   const data = projects.map((p) => ({
-  //     name: p.nombre,
-  //     progress: p.porcentaje_avance,
-  //   }));
+  const data = projects.map((p) => ({
+    name: p.nombre,
+    progress: p.porcentaje_avance,
+  }));
 
   const ChartControls = (
     <div style={{ display: "flex", gap: "8px" }}>
       <select
         value={chartType}
         onChange={(e) => setChartType(e.target.value as any)}
-        className="filter-btn" // Reutilizando tu clase de CSS
+        className="filter-btn"
       >
         <option value="bar">Barras</option>
         <option value="line">Líneas</option>
@@ -83,7 +77,7 @@ export default function ProjectsProgress({ projects }: ProjectsProgressProps) {
 
   const renderChart = () => {
     const commonProps = {
-      data: dataExample,
+      data,
       margin: { top: 10, right: 30, left: -20, bottom: 0 },
     };
 
@@ -179,20 +173,19 @@ export default function ProjectsProgress({ projects }: ProjectsProgressProps) {
   };
 
   return (
-    <Section variant="chart" title="Progreso de Proyectos">
-      <div
-        style={{
-          marginBottom: "1rem",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        {ChartControls}
-      </div>
+    <Section
+      variant="chart"
+      title="Progreso de Proyectos"
+      actions={ChartControls}
+    >
       <div className="project-progress">
-        <ResponsiveContainer width="100%" height="100%">
-          {renderChart()}
-        </ResponsiveContainer>
+        {data.length > 0 ? (
+          <ResponsiveContainer width="100%" height={300}>
+            {renderChart()}
+          </ResponsiveContainer>
+        ) : (
+          <p className="no-data">No hay proyectos para mostrar.</p>
+        )}
       </div>
     </Section>
   );

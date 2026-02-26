@@ -31,4 +31,26 @@ export const userService = {
       p_supervisante: supervisante,
     });
   },
+
+  async getUsersByRole(roleName: string) {
+    const { data, error } = await supabase
+      .from("perfil")
+      .select(
+        `
+      id, 
+      nombre, 
+      ap_paterno, 
+      ap_materno,
+      usuario_rol!inner(
+        rol!inner(
+          nombre
+        )
+      )
+    `,
+      )
+      .eq("usuario_rol.rol.nombre", roleName);
+
+    if (error) throw error;
+    return data || [];
+  },
 };

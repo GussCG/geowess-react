@@ -13,77 +13,47 @@ interface ActivityFeedProps {
     usuario_id: string;
     created_at: string;
   }[];
+  loading?: boolean;
 }
 
-export default function ActivityFeed({ notifications }: ActivityFeedProps) {
-  //   const sortedNotifications = notifications
-  //     ? [...notifications].sort(
-  //         (a, b) =>
-  //           new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
-  //       )
-  //     : [];
+export default function ActivityFeed({
+  notifications,
+  loading,
+}: ActivityFeedProps) {
+  const sortedNotifications = notifications
+    ? [...notifications].sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+      )
+    : [];
 
   const [showUnreadOnly, setShowUnreadOnly] = useState(false);
-
-  //   Datos de prueba para desarrollo
-  const sortedNotifications = [
-    {
-      id: "1",
-      titulo: "Nuevo proyecto creado",
-      descripcion: "Se ha creado el proyecto 'Construcción de Edificio A'",
-      visto: true,
-      usuario_id: "123",
-      created_at: "2024-06-01",
-    },
-    {
-      id: "2",
-      titulo: "Estimación aprobada",
-      descripcion:
-        "La estimación para el proyecto 'Carretera B' ha sido aprobada",
-      visto: false,
-      usuario_id: "123",
-      created_at: "2024-06-02",
-    },
-    {
-      id: "3",
-      titulo: "Nuevo proyecto creado",
-      descripcion: "Se ha creado el proyecto 'Construcción de Edificio A'",
-      visto: true,
-      usuario_id: "123",
-      created_at: "2024-06-01",
-    },
-    {
-      id: "4",
-      titulo: "Estimación aprobada",
-      descripcion:
-        "La estimación para el proyecto 'Carretera B' ha sido aprobada",
-      visto: false,
-      usuario_id: "123",
-      created_at: "2024-06-02",
-    },
-  ];
 
   const filteredNotifications = showUnreadOnly
     ? sortedNotifications.filter((notif) => !notif.visto)
     : sortedNotifications;
 
   return (
-    <Section variant="list" title="Actividad Reciente">
-      <div className="filter-header">
-        <label className="filter-switch">
-          <div className="switch-container">
-            <input
-              type="checkbox"
-              className="switch-input"
-              checked={showUnreadOnly}
-              onChange={() => setShowUnreadOnly(!showUnreadOnly)}
-            />
-            <span className="slider"></span>
-          </div>
-          <span className="switch-label">Solo no leídas</span>
-        </label>
-      </div>
-
+    <Section
+      variant="list"
+      title="Actividad Reciente"
+      actions={
+        <div className="filter-header">
+          <label className="filter-switch">
+            <div className="switch-container">
+              <input
+                type="checkbox"
+                className="switch-input"
+                checked={showUnreadOnly}
+                onChange={() => setShowUnreadOnly(!showUnreadOnly)}
+              />
+              <span className="slider"></span>
+            </div>
+            <span className="switch-label">Solo no leídas</span>
+          </label>
+        </div>
+      }
+    >
       <ul className="activity-feed">
         {filteredNotifications.length > 0 ? (
           filteredNotifications.map((notif) => (

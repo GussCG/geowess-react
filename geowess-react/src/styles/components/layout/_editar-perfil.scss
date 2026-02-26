@@ -1,0 +1,53 @@
+@use "../../variables" as *;
+
+.page.profile-page {
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      align-items: stretch;
+
+      .form-section {
+        padding: 1rem;
+        border: 1px solid var(--dashboard-item-border-color);
+        border-radius: 10px;
+        background-color: var(--dashboard-item-bg-color);
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .form-section-title {
+          font-size: 1.2rem;
+          font-weight: 500;
+          margin-bottom: 0.8rem;
+          color: var(--text-color);
+        }
+
+        .date-field .date-wrapper {
+          label {
+            transform: none;
+            top: -8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 1;
+            color: var(--index-login-button-color);
+
+            background-color: var(--index-register-button-color);
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .btn-submit {
+    max-width: 200px;
+    align-self: center;
+  }
+}

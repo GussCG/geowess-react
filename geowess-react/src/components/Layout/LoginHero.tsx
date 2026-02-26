@@ -131,11 +131,7 @@ function LoginHero() {
                 </div>
               )}
 
-              <button
-                type="submit"
-                className="hero-btn-submit"
-                disabled={loading}
-              >
+              <button type="submit" className="btn-submit" disabled={loading}>
                 {loading ? "Verificando..." : "Entrar"}
               </button>
             </form>

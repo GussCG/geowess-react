@@ -19,31 +19,12 @@ interface FinancialSummaryProps {
 export default function FinancialSummary({ projects }: FinancialSummaryProps) {
   if (!projects) return null;
 
-  // Datos de prueba, reemplazar con datos reales del backend cuando estén disponibles
-  const sampleProjects = [
-    {
-      id: "1",
-      nombre: "Proyecto A",
-      fecha_inicio: "2024-01-01",
-      fecha_fin: "2024-12-31",
-      status: true,
-      ubicacion: "Ciudad A",
-      porcentaje_avance: 75,
-      creado_por: "Usuario 1",
-      created_at: "2024-01-01T00:00:00Z",
-      presupuesto: 1000000,
-      estado: "activo",
-    },
-  ];
-
-  const totalBudget = sampleProjects.reduce(
+  const totalBudget = projects.reduce(
     (acc, p) => acc + (p.presupuesto ?? 0),
     0,
   );
 
-  const activeProjects = sampleProjects.filter(
-    (p) => p.estado === "activo",
-  ).length;
+  const activeProjects = projects.filter((p) => p.estado === "activo").length;
 
   return (
     <Section variant="chart" title="Resumen Financiero">

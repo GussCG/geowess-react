@@ -20,22 +20,34 @@ export default function AdminDashboard({ userId }: AdminDashboardProps) {
 
   return (
     <DashboardLayout>
-      <div className="col-3">
-        <KPISection kpis={kpis} />
-      </div>
-      <div className="col-9">
-        <FinancialSummary projects={projects} />
-      </div>
-      <div className="col-6">
-        <ProjectsProgress projects={projects} />
-      </div>
-      <div className="col-6">
-        <RecentEstimations estimations={estimations} />
+      <div className="grid-stack-item" gs-w="6" gs-h="1">
+        <div className="grid-stack-item-content">
+          <KPISection kpis={kpis} />
+        </div>
       </div>
 
-      <div className="col-12">
-        {" "}
-        <ActivityFeed notifications={notifications} />
+      <div className="grid-stack-item" gs-w="6" gs-h="2">
+        <div className="grid-stack-item-content">
+          <FinancialSummary projects={projects} />
+        </div>
+      </div>
+
+      <div className="grid-stack-item" gs-w="6" gs-h="3">
+        <div className="grid-stack-item-content">
+          <ProjectsProgress projects={projects} />
+        </div>
+      </div>
+
+      <div className="grid-stack-item" gs-w="6" gs-h="2">
+        <div className="grid-stack-item-content">
+          <RecentEstimations estimations={estimations} />
+        </div>
+      </div>
+
+      <div className="grid-stack-item" gs-w="12" gs-h="3">
+        <div className="grid-stack-item-content">
+          <ActivityFeed notifications={notifications} />
+        </div>
       </div>
     </DashboardLayout>
   );

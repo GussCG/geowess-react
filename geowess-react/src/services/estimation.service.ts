@@ -20,6 +20,15 @@ export const estimationService = {
     return supabase.from("estimacion").insert(estimation).select().single();
   },
 
+  async updateEstimation(id: string, updates: any) {
+    return supabase
+      .from("estimacion")
+      .update(updates)
+      .eq("id", id)
+      .select()
+      .single();
+  },
+
   async getProjectEstimations(projectId: string) {
     return supabase.from("estimacion").select("*").eq("proyecto_id", projectId);
   },
@@ -32,8 +41,26 @@ export const estimationService = {
       *,
       proyecto:proyecto_id ( nombre )
     `,
-      ) // Esto hace un join para traer el nombre del proyecto
+      )
       .order("created_at", { ascending: false })
       .limit(limit);
+  },
+
+  async updateEstimationStatus(
+    id: string,
+    estado: "Pendiente" | "Validada" | "Rechazada",
+  ) {
+    return supabase.from("estimacion").update({ estado }).eq("id", id);
+  },
+
+  async getEstimationSummary(projectId: string) {
+    return supabase
+      .from("estimacion")
+      .select("importe_contrato, neto_recibir")
+      .eq("proyecto_id", projectId);
+  },
+
+  async deleteEstimation(id: string) {
+    return supabase.from("estimacion").delete().eq("id", id);
   },
 };

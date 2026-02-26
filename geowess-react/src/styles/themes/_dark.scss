@@ -57,6 +57,7 @@
   --dashboard-item-hover-bg-color: rgba(255, 255, 255, 0.15);
   --dashboard-item-alert-bg-color: rgba(255, 100, 100, 0.2);
   --dashboard-item-alert-border-color: rgba(255, 100, 100, 0.4);
+  --dashboard-active-bg-color: rgba(80, 120, 255, 0.15);
 
   --status-pending-color: #ffcd45;
   --status-inprogress-color: #87ceeb;
@@ -65,4 +66,23 @@
   --status-color: #000000;
 
   --bar-color: rgb(62, 98, 130);
+
+  --primary-btn-bg-color: #0c46006e;
+  --primary-btn-hover-bg-color: #0c4600;
+  --primary-btn-border-color: #147800;
+
+  --secondary-btn-bg-color: #003f876e;
+  --secondary-btn-hover-bg-color: #003f87;
+  --secondary-btn-border-color: #0055ff;
+
+  --danger-btn-bg-color: #8200006e;
+  --danger-btn-hover-bg-color: #820000;
+  --danger-btn-border-color: #ff1d1d;
+
+  --project-inprogress-bg-color: #0084ff50;
+  --project-inprogress-border-color: #00b3ff;
+  --project-inactive-bg-color: #00880060;
+  --project-inactive-border-color: #00ff1e;
+  --project-progress-bg-color: #00ff0871;
+  --project-supervisor-border-color: #ffe600;
 }
