@@ -19,9 +19,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./context/User/UserContext";
 import ProjectCreate from "./pages/private/projects/ProjectCreate";
 import Estimaciones from "./pages/private/projects/Estimaciones";
-import CatalogoMaestro from "./pages/private/projects/CatalogoMaestro";
 import Project from "./pages/private/projects/Project";
 import ProjectEdit from "./pages/private/projects/ProjectEdit";
+import ProjectPartidas from "./pages/private/projects/ProjectPartidas";
 
 function App() {
   return (
@@ -45,6 +45,10 @@ function App() {
                   <Route path="/estimaciones" element={<Estimaciones />} />
                   <Route path="/projects/:id" element={<Project />} />
                   <Route path="/projects/:id/edit" element={<ProjectEdit />} />
+                  <Route
+                    path="/partidas/:idFase"
+                    element={<ProjectPartidas />}
+                  />
                 </Route>
               </Route>
             </Routes>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { phaseService } from "../services/phase.service";
 import { toast } from "react-toastify";
+import { calculateProgressMetrics } from "../utils/calculations";
 
 export function usePhases() {
   const [phases, setPhases] = useState<any[]>([]);
@@ -8,17 +9,17 @@ export function usePhases() {
 
   const fetchPhases = async (projectId: string) => {
     if (!projectId) return;
-
     setLoading(true);
     try {
       const { data, error } = await phaseService.getPhasesByProject(projectId);
       if (error) throw error;
-      setPhases(data || []);
+
+      const { phasesWithProgress } = calculateProgressMetrics(data);
+      setPhases(phasesWithProgress);
+      console.log("Phases with progress:", phasesWithProgress);
     } catch (error) {
-      console.error("Error fetching phases:", error);
-      toast.error("Error al cargar las fases", {
-        toastId: "fetch-phases-error",
-      });
+      console.error("Error:", error);
+      toast.error("Error al calcular avance de fases");
     } finally {
       setLoading(false);
     }
@@ -72,6 +73,15 @@ export function usePhases() {
     }
   };
 
+  const getPhaseById = async (id: string) => {
+    const local = phases.find((p) => p.id === id);
+    if (local) return local;
+
+    const { data, error } = await phaseService.getPhaseById(id);
+    if (error) return null;
+    return data;
+  };
+
   return {
     phases,
     loading,
@@ -79,5 +89,6 @@ export function usePhases() {
     addPhase,
     updatePhase,
     deletePhase,
+    getPhaseById,
   };
 }

@@ -44,6 +44,11 @@ import { LuCalendar } from "react-icons/lu";
 import { LuTrendingUp } from "react-icons/lu";
 import { LuPlus } from "react-icons/lu";
 
+import { FaChevronDown } from "react-icons/fa";
+import { FaFileDownload } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaRegCircle } from "react-icons/fa";
+
 const Icons = {
   GeoWessLogo,
   MdLightMode,
@@ -81,6 +86,10 @@ const Icons = {
   LuCalendar,
   LuTrendingUp,
   LuPlus,
+  FaChevronDown,
+  FaFileDownload,
+  FaCheckCircle,
+  FaRegCircle,
 };
 
 export default Icons;

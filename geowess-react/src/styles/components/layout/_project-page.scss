@@ -81,13 +81,13 @@
         }
 
         .value {
-          font-size: 0.9rem;
+          font-size: 0.75rem;
           font-weight: bold;
           color: var(--text-color);
         }
 
         .label {
-          font-size: 0.75rem;
+          font-size: 0.6rem;
           text-transform: uppercase;
           letter-spacing: 1px;
           color: var(--text-muted);
@@ -152,6 +152,7 @@
       border: 1px solid var(--dashboard-item-border-color);
       border-radius: 8px;
       padding: 1.5rem;
+      height: 100%;
     }
 
     .phases-progress-chart {

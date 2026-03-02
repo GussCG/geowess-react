@@ -1,11 +1,4 @@
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 interface Phase {
   id: string;
@@ -56,30 +49,35 @@ function PhasesProgressChart({ phases }: PhasesProgressChartProps) {
 
   return (
     <div className="phases-progress-chart">
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={data}
-            innerRadius={60}
-            outerRadius={80}
-            paddingAngle={5}
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
-            ))}
-          </Pie>
-          <Tooltip
-            contentStyle={{
-              backgroundColor: "#1a1a1a",
-              border: "1px solid var(--dashboard-item-border-color)",
-              borderRadius: "8px",
-            }}
-            itemStyle={{ color: "#fff" }}
-          />
-          <Legend verticalAlign="bottom" height={36} />
-        </PieChart>
-      </ResponsiveContainer>
+      <div className="section-header">
+        <h3>Progreso del Proyecto</h3>
+      </div>
+      <div style={{ width: "100%", height: "300px" }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              innerRadius={60}
+              outerRadius={80}
+              paddingAngle={5}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Pie>
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "#1a1a1a",
+                border: "1px solid var(--dashboard-item-border-color)",
+                borderRadius: "8px",
+              }}
+              itemStyle={{ color: "#fff" }}
+            />
+            {/* <Legend verticalAlign="bottom" height={36} /> */}
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

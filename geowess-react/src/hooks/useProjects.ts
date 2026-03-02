@@ -58,15 +58,18 @@ export function useProjects(role: string | null, userId?: string) {
 
   const deleteProject = async (id: string) => {
     setLoading(true);
-
     try {
       const { error } = await projectService.deleteProject(id);
-      if (error) throw error;
+
+      if (error) {
+        console.error("Error real de Supabase:", error.message);
+        return false;
+      }
 
       setProjects((prev) => prev.filter((p) => p.id !== id));
       return true;
     } catch (error) {
-      console.error("Error deleting project:", error);
+      console.error("Error en la petición:", error);
       return false;
     } finally {
       setLoading(false);

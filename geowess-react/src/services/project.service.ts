@@ -52,6 +52,6 @@ export const projectService = {
   },
 
   async deleteProject(id: string) {
-    return supabase.from("proyecto").delete().eq("id", id);
+    return await supabase.from("proyecto").delete().eq("id", id);
   },
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useProjects } from "../../../hooks/useProjects";
 import { Link, useParams } from "react-router-dom";
 import Icons from "../../../components/Others/IconProvider";
@@ -29,6 +29,15 @@ function Project() {
   const { phases, loading, fetchPhases, addPhase, updatePhase, deletePhase } =
     usePhases();
   const [project, setProject] = useState<any>(null);
+
+  const totalCalculatedProgress = useMemo(() => {
+    if (phases.length === 0) return 0;
+    const sum = phases.reduce(
+      (acc, phase) => acc + (phase.porcentaje_avance || 0),
+      0,
+    );
+    return Math.round(sum / phases.length);
+  }, [phases]);
 
   const [isCreatingPhase, setIsCreatingPhase] = useState(false);
   const [newPhase, setNewPhase] = useState({
@@ -78,9 +87,6 @@ function Project() {
       </div>
     );
 
-  console.log("Project data:", project);
-  console.log("Phases data:", phases);
-
   return (
     <div className="page project-page">
       <header className="page-header">
@@ -116,16 +122,16 @@ function Project() {
           <div className="kpi-card">
             <LuTrendingUp className="kpi-icon" />
             <div style={{ width: "100%" }}>
-              <p className="label">Avance</p>
+              <p className="label">Avance Global</p>
               <div className="progress-container">
                 <div className="progress-bar-bg">
                   <div
                     className="progress-fill"
-                    style={{ width: `${project.porcentaje_avance}%` }}
+                    style={{ width: `${totalCalculatedProgress}%` }}
                   ></div>
                 </div>
                 <span className="progress-text">
-                  {project.porcentaje_avance}%
+                  {totalCalculatedProgress}%
                 </span>
               </div>
             </div>
@@ -237,12 +243,17 @@ function Project() {
                     {phases.map((phase: any) => (
                       <tr key={phase.id}>
                         <td>
-                          <EditableCell
-                            value={phase.nombre}
-                            onSave={(val) =>
-                              handleUpdatePhase(phase.id, "nombre", val)
-                            }
-                          />
+                          <div className="phase-name-cell">
+                            <EditableCell
+                              value={phase.nombre}
+                              onSave={(val) =>
+                                handleUpdatePhase(phase.id, "nombre", val)
+                              }
+                            />
+                            <small className="percentage-badge">
+                              {phase.porcentaje_avance || 0}% completado
+                            </small>
+                          </div>
                         </td>
                         <td>
                           <EditableCell
@@ -265,8 +276,8 @@ function Project() {
                         <td style={{ textAlign: "right" }}>
                           <div className="action-buttons">
                             <Link
-                              to={`/catalogo/${phase.id}`}
-                              className="filter-btn primary"
+                              to={`/partidas/${phase.id}`}
+                              className="filter-btn secondary"
                               title="Ver Catalogo de la Fase"
                             >
                               <GrCatalogOption />

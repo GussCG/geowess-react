@@ -105,21 +105,12 @@ function ProjectsPage() {
     ) {
       return;
     }
+    const success = await deleteProject(projectId);
 
-    try {
-      setLoading(true);
-      const success = await deleteProject(projectId);
-      if (success) {
-        setProjects((prev) => prev.filter((p) => p.id !== projectId));
-        toast.success("Proyecto eliminado exitosamente");
-      } else {
-        alert("Error al eliminar el proyecto");
-      }
-    } catch (error) {
-      console.error("Error deleting project:", error);
-      alert("Error al eliminar el proyecto");
-    } finally {
-      setLoading(false);
+    if (success) {
+      toast.success("Proyecto eliminado exitosamente");
+    } else {
+      toast.error("Error al eliminar el proyecto");
     }
   };
 
@@ -278,7 +269,7 @@ function ProjectsPage() {
                       handleUpdate(
                         p.id,
                         "presupuesto",
-                        parseFloat(val.replace(/[$,]/g, "")),
+                        parseFloat(String(val).replace(/[$,]/g, "")),
                       )
                     }
                   />
